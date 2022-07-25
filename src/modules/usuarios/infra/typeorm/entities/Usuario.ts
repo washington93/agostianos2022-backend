@@ -24,6 +24,9 @@ class Usuario {
     admin: boolean;
 
     @Column()
+    ativo: boolean;
+
+    @Column()
     email: string;
 
     @Column()
