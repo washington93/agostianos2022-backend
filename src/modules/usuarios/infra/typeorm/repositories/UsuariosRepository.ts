@@ -26,13 +26,25 @@ class UsuariosRepository implements IUsuariosRepository {
     async findbyEmail(email: string): Promise<Usuario[]> {
         email = email.toLowerCase();
         const result = await this.ormRepository.find({
-            where: {email},
+            where: { email },
         });
         return result;
     }
 
-    updatePassword(id: string, password: string): Promise<void> {
+    async updatePassword(id: string, password: string): Promise<void> {
         throw new Error("Method not implemented.");
+    }
+
+    async updateUsuario(usuario: Usuario): Promise<Usuario> {
+        const result = await this.ormRepository.save(usuario);
+        return result;
+    }
+
+    findById(usuario_id: string | number): Promise<Usuario[]> {
+        const result = this.ormRepository.find({
+            where: { id: usuario_id },
+        });
+        return result;
     }
 }
 

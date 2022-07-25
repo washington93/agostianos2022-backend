@@ -9,7 +9,17 @@ import UsuariosController from "@modules/usuarios/infra/controllers/UsuariosCont
 const usuariosRouter = Router();
 const usuariosController = new UsuariosController();
 
-usuariosRouter.get("", ensureAdminAuthenticated, usuariosController.listarUsuarios);
+usuariosRouter.get(
+    "",
+    ensureAdminAuthenticated,
+    usuariosController.listarUsuarios
+);
+
+usuariosRouter.post(
+    "/ativar_desativar",
+    ensureAdminAuthenticated,
+    usuariosController.ativarDesativarUsuario
+);
 
 usuariosRouter.post("", usuariosController.registrarUsuario);
 
