@@ -29,7 +29,11 @@ class LoginService {
         const passwordmatch = await compare(data.senha, user.senha);
 
         if (!passwordmatch) {
-            throw new AppError("Verifique sua senha/email.", 401);
+            throw new AppError("Usuário ou senha inválidos.", 401);
+        }
+
+        if (!user?.ativo) {
+            throw new AppError("Aguarde até que a diretoria libere o seu acesso", 404);
         }
 
         const token = sign(
