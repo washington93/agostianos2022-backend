@@ -35,6 +35,12 @@ export class CreateUser1658695943488 implements MigrationInterface {
                         default: false,
                     },
                     {
+                        name: "ativo",
+                        type: "boolean",
+                        isNullable: true,
+                        default: false,
+                    },
+                    {
                         name: "email",
                         type: "varchar",
                         isNullable: false,
