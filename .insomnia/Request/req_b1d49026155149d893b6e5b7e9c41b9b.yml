@@ -1,0 +1,31 @@
+_id: req_b1d49026155149d893b6e5b7e9c41b9b
+type: Request
+parentId: fld_dce7f1aca92e46d9a415ecbed292b7e9
+modified: 1658764454371
+created: 1658721432495
+url: "{{ _.baseUrl }}/usuarios"
+name: cadastrar
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	  "nome": "Larissa da Silva Tavares",
+    		"email": "larissa.tavares1844@gmail.com",
+    		"senha":"1234"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_c079255b84bd40a1bc6382d6e6e28b57
+authentication: {}
+metaSortKey: -1658721432495
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

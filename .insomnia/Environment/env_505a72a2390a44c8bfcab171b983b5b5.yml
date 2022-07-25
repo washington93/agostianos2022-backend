@@ -1,0 +1,21 @@
+_id: env_505a72a2390a44c8bfcab171b983b5b5
+type: Environment
+parentId: env_2095b80fa2692b695fdebf57d167428baf68f318
+modified: 1658764397068
+created: 1658721365418
+name: localhost
+data:
+  baseUrl: http://localhost:3333
+  usuario: larissa.tavares1844@gmail.com
+  senha: "1234"
+  token: "{% response 'body', 'req_d5652b6f1f7d407493a73e0b19b72c86',
+    'b64::JC50b2tlbg==::46b', 'never', 60 %}"
+dataPropertyOrder:
+  "&":
+    - baseUrl
+    - usuario
+    - senha
+    - token
+color: null
+isPrivate: false
+metaSortKey: 1658721365418

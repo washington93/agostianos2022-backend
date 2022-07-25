@@ -1,0 +1,30 @@
+_id: req_d5652b6f1f7d407493a73e0b19b72c86
+type: Request
+parentId: fld_0fa5e0b8f7f04335b4d82257958808e2
+modified: 1658764419110
+created: 1658721417212
+url: "{{ _.baseUrl }}/autenticacao"
+name: login
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"email":"{{ _.usuario }}",
+    	"senha":"{{ _.senha }}"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_54b4c7e8825848d29209ea75f943523d
+authentication: {}
+metaSortKey: -1658721417212
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
