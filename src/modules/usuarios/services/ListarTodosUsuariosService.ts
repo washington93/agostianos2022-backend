@@ -21,6 +21,7 @@ class CadastrarUsuarioService {
                 primeiroNome: item.primeiroNome,
                 telefone: item.telefone,
                 avatar: item.avatar,
+                ativo: item.ativo,
                 sobre: item.sobre,
                 moldura: item.moldura,
                 pontuacao: item.pontuacao,
