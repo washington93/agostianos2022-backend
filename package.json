@@ -11,13 +11,6 @@
     "typeorm": "ts-node-dev --inspect --transpile-only -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "typeorm:dev": "export NODE_ENV=development && ts-node-dev --inspect --transpile-only -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
   },
-  "keywords": [
-    "example",
-    "heroku"
-  ],
-  "engines": {
-    "node": "16.13.0"
-  },
   "dependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
