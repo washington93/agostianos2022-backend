@@ -1,10 +1,10 @@
-_id: req_814efd0920a14d6e9d7b5e7adfd9df8c
+_id: req_fad146fe8cea4e4db708cab2bc4ce9fa
 type: Request
 parentId: fld_349ac89ab6794010b020dbe7fc2239a4
-modified: 1658971439622
-created: 1658764098688
-url: "{{ _.baseUrl }}/usuarios/ativar_desativar"
-name: ativar usuario
+modified: 1658971447455
+created: 1658970847376
+url: "{{ _.baseUrl }}/usuarios/modo_admin"
+name: modo admin
 description: ""
 method: POST
 body:
@@ -12,7 +12,7 @@ body:
   text: |-
     {
     	"usuario_id":2,
-    	"ativo":false
+    	"admin":true
     }
 parameters: []
 headers:
@@ -22,7 +22,7 @@ headers:
 authentication:
   type: bearer
   token: "{{ _.token }}"
-metaSortKey: -1658764098688
+metaSortKey: -1658755823967.875
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

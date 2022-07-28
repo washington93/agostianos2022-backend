@@ -1,14 +1,14 @@
 _id: env_8151250515b14705b9689556a4073cd3
 type: Environment
 parentId: env_2095b80fa2692b695fdebf57d167428baf68f318
-modified: 1658764395173
+modified: 1658970539968
 created: 1658721390317
 name: localhost-admin
 data:
   baseUrl: http://localhost:3333
   usuario: washington.ribeiro@paneas.com
-  senha: "1234"
-  token: "{% response 'body', 'req_ba511dd21b3f440bbd55051803ed7597',
+  senha: admin
+  token: "{% response 'body', 'req_d5652b6f1f7d407493a73e0b19b72c86',
     'b64::JC50b2tlbg==::46b', 'never', 60 %}"
 dataPropertyOrder:
   "&":
