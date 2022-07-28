@@ -2,18 +2,17 @@ import { injectable, inject } from "tsyringe";
 import { hash } from 'bcryptjs';
 
 import IUsuariosRepository from "@modules/usuarios/repositories/IUsuariosRepository";
-import ICadastrarUsuarioDTO from "@modules/usuarios/dtos/ICadastrarUsuarioDTO";
 
 import AppError from "@shared/errors/AppError";
 
 @injectable()
-class AtivarDesativarUsuarioService {
+class ModoAdminService {
     constructor(
         @inject("UsuariosRepository")
         private usuariosRepository: IUsuariosRepository
     ) {}
 
-    async execute(data:{usuario_id:string | number, ativo: boolean}): Promise<any> {
+    async execute(data:{usuario_id:string | number, admin: boolean}): Promise<any> {
         // TODO - checar se usuario ja existe
         const result = await this.usuariosRepository.findById(
             data.usuario_id
@@ -24,7 +23,7 @@ class AtivarDesativarUsuarioService {
         }
 
         const _usuario = result;
-        _usuario.ativo = data.ativo;
+        _usuario.ativo = data.admin;
         
         const resp = await this.usuariosRepository.updateUsuario(
             _usuario
@@ -34,4 +33,4 @@ class AtivarDesativarUsuarioService {
     }
 }
 
-export default AtivarDesativarUsuarioService;
+export default ModoAdminService;

@@ -18,7 +18,7 @@ class Usuario {
     primeiroNome: string;
 
     @Column()
-    senha: string;
+    senha?: string;
 
     @Column()
     admin: boolean;
@@ -27,22 +27,22 @@ class Usuario {
     ativo: boolean;
 
     @Column()
-    email: string;
+    email?: string;
 
     @Column()
-    telefone: string;
+    telefone?: string;
 
     @Column()
-    sobre: string;
+    sobre?: string;
 
     @Column()
-    avatar: string;
+    avatar?: string;
 
     @Column()
-    moldura: string;
+    moldura?: string;
 
     @Column()
-    pontuacao: number;
+    pontuacao?: number;
 
     @CreateDateColumn()
     created_at: Date;

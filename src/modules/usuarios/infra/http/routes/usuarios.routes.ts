@@ -21,6 +21,12 @@ usuariosRouter.post(
     usuariosController.ativarDesativarUsuario
 );
 
+usuariosRouter.post(
+    "/modo_admin",
+    ensureAdminAuthenticated,
+    usuariosController.modoAdmin
+);
+
 usuariosRouter.post("", usuariosController.registrarUsuario);
 
 export default usuariosRouter;

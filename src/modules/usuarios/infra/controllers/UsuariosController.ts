@@ -5,6 +5,7 @@ import { getCustomRepository } from "typeorm";
 import CadastrarUsuarioService from "@modules/usuarios/services/CadastrarUsuarioService";
 import ListarTodosUsuariosService from "@modules/usuarios/services/ListarTodosUsuariosService";
 import AtivarDesativarUsuarioService from "@modules/usuarios/services/AtivarDesativarUsuarioService";
+import ModoAdminService from "@modules/usuarios/services/ModoAdminService";
 
 export default class UsuariosController {
     public async registrarUsuario(
@@ -56,6 +57,23 @@ export default class UsuariosController {
         const result = await ativarDesativarUsuarioService.execute({
             usuario_id,
             ativo: ativo == true,
+        });
+
+        return response.json(result);
+    }
+
+    public async modoAdmin(
+        request: Request,
+        response: Response
+    ): Promise<Response> {
+        const { usuario_id, admin } = request.body;
+        const modoAdminService = container.resolve(
+            ModoAdminService
+        );
+
+        const result = await modoAdminService.execute({
+            usuario_id,
+            admin: admin == true,
         });
 
         return response.json(result);

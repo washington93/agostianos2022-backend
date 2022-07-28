@@ -40,10 +40,15 @@ class UsuariosRepository implements IUsuariosRepository {
         return result;
     }
 
-    findById(usuario_id: string | number): Promise<Usuario[]> {
-        const result = this.ormRepository.find({
+    async findById(usuario_id: string | number): Promise<Usuario | undefined> {
+        const result = await this.ormRepository.findOne({
             where: { id: usuario_id },
         });
+
+        if(result){
+            delete result.senha;
+        }
+    
         return result;
     }
 }
