@@ -23,7 +23,7 @@ class ModoAdminService {
         }
 
         const _usuario = result;
-        _usuario.ativo = data.admin;
+        _usuario.admin = data.admin;
         
         const resp = await this.usuariosRepository.updateUsuario(
             _usuario
