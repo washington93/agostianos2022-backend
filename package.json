@@ -2,6 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
+  "author": "Washington da Silva Ribeiro",
   "license": "MIT",
   "scripts": {
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
@@ -9,6 +10,13 @@
     "start": "npm run typeorm migration:run && node dist/shared/infra/http/server.js",
     "typeorm": "ts-node-dev --inspect --transpile-only -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "typeorm:dev": "export NODE_ENV=development && ts-node-dev --inspect --transpile-only -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "engines": {
+    "node": "14.x"
   },
   "dependencies": {
     "@babel/cli": "^7.16.0",
