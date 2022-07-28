@@ -1,0 +1,33 @@
+version: "3.5"
+services:
+  {{ project }}-{{ branch }}:
+    image: {{ account }}.dkr.ecr.sa-east-1.amazonaws.com/{{ group }}-{{ project }}-{{ branch }}:latest
+    networks:
+      - prod
+    deploy:
+      update_config:
+        parallelism: 1
+        delay: 10s
+      replicas: {{ replica }}
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: any
+    environment:
+      - TZ=America/Sao_Paulo
+      - NODE_ENV=production
+      - DB_HOST={{ dbhost }}
+      - DB_PORT={{ dbport }}
+      - DB_USER={{ dbuser }}
+      - DB_PASS={{ dbpass }}
+      - DB_NAME={{ dbname }}
+      - BRANCH={{ branch }}
+      - LOG_LEVEL=info
+      - LISTEN_PORT=3333
+    ports:
+      - "{{ porta }}:3333"
+networks:
+  prod:
+    external: true
+
