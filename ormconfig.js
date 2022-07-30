@@ -33,6 +33,7 @@ const prdConfig = [{
 },];
 
 console.log("Enviroment: ", process.env.NODE_ENV || "prodution");
+console.log("DB_HOST: ", process.env.DB_HOST);
 
 switch (process.env.NODE_ENV) {
     case "development":
