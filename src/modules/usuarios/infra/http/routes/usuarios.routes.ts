@@ -29,4 +29,6 @@ usuariosRouter.post(
 
 usuariosRouter.post("", usuariosController.registrarUsuario);
 
+usuariosRouter.get("/dados", usuariosController.buscarDadosUsuario);
+
 export default usuariosRouter;

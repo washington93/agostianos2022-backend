@@ -6,6 +6,7 @@ import CadastrarUsuarioService from "@modules/usuarios/services/CadastrarUsuario
 import ListarTodosUsuariosService from "@modules/usuarios/services/ListarTodosUsuariosService";
 import AtivarDesativarUsuarioService from "@modules/usuarios/services/AtivarDesativarUsuarioService";
 import ModoAdminService from "@modules/usuarios/services/ModoAdminService";
+import BuscarDadosUsuarioService from "@modules/usuarios/services/BuscarDadosUsuarioService";
 
 export default class UsuariosController {
     public async registrarUsuario(
@@ -67,9 +68,7 @@ export default class UsuariosController {
         response: Response
     ): Promise<Response> {
         const { usuario_id, admin } = request.body;
-        const modoAdminService = container.resolve(
-            ModoAdminService
-        );
+        const modoAdminService = container.resolve(ModoAdminService);
 
         const result = await modoAdminService.execute({
             usuario_id,
@@ -77,5 +76,21 @@ export default class UsuariosController {
         });
 
         return response.json(result);
+    }
+
+    public async buscarDadosUsuario(
+        request: Request,
+        response: Response
+    ): Promise<Response> {
+        const authHeader = request.headers.authorization;
+        if (authHeader) {
+            const buscarDadosUsuarioService = container.resolve(BuscarDadosUsuarioService);
+
+            const result = await buscarDadosUsuarioService.execute(authHeader);
+
+            return response.json(result);
+        } else {
+            return response.status(401).json({ error: "Token invalido" });
+        }
     }
 }

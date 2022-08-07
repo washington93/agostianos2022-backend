@@ -26,7 +26,7 @@ class LoginService {
             throw new AppError("Usuário não encontrado", 404);
         }
 
-        const passwordmatch = await compare(data.senha, user.senha);
+        const passwordmatch = await compare(data.senha, user.senha || '');
 
         if (!passwordmatch) {
             throw new AppError("Usuário ou senha inválidos.", 401);
