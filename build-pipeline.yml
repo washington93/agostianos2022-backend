@@ -1,0 +1,15 @@
+trigger:
+  branches:
+    include:
+    - gcc
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)/s/'
+    artifact: '$(IMAGENAME)'
+    publishLocation: 'pipeline'
