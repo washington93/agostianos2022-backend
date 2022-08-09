@@ -1,7 +1,6 @@
 import { injectable, inject } from "tsyringe";
 
 import IUsuariosRepository from "@modules/usuarios/repositories/IUsuariosRepository";
-import ICadastrarUsuarioDTO from "@modules/usuarios/dtos/ICadastrarUsuarioDTO";
 
 @injectable()
 class CadastrarUsuarioService {
