@@ -14,7 +14,7 @@ class Usuario {
     @Column()
     nome: string;
 
-    @Column()
+    @Column({ name: "primeiro_nome" })
     primeiroNome: string;
 
     @Column()
