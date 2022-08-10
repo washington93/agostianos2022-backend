@@ -5,6 +5,7 @@ import { Request, Response } from "express";
 import authConfig from "@config/auth";
 import RegistrarContribuicaoService from "@modules/contribuicoes/services/RegistrarContribuicaoService";
 import ListarTodasContribuicoesService from "@modules/contribuicoes/services/ListarTodasContribuicoesService";
+import DeletarContribuicoesEmLoteService from "@modules/contribuicoes/services/DeletarContribuicoesEmLoteService";
 import ListarContribuicoesPorUsuarioIdService from "@modules/contribuicoes/services/ListarContribuicoesPorUsuarioIdService";
 
 export default class UsuariosController {
@@ -17,6 +18,21 @@ export default class UsuariosController {
         );
 
         const result = await listarTodasContribuicoesService.execute();
+
+        return response.json(result);
+    }
+
+    public async deletarContribuicoesemLote(
+        request: Request,
+        response: Response
+    ): Promise<Response> {
+        const contribuicoes = request.body.contribuicoes;
+
+        const deletarContribuicoesEmLoteService = container.resolve(
+            DeletarContribuicoesEmLoteService
+        );
+
+        const result = await deletarContribuicoesEmLoteService.execute(contribuicoes);
 
         return response.json(result);
     }

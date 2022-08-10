@@ -12,6 +12,16 @@ class ContribuicoesRepository implements IContribuicoesRepository {
         this.ormRepository = getRepository(Contribuicao);
     }
 
+    async delete(contribuicao_id: string | number): Promise<Contribuicao> {
+        const contribuicao = await this.ormRepository.findOne(contribuicao_id);
+        if (!contribuicao) {
+            throw new Error("Contribuicao não encontrada");
+        }
+        await this.ormRepository.remove(contribuicao);
+        return contribuicao;
+
+    }
+
     async findAll(): Promise<Contribuicao[]> {
         const result = await this.ormRepository.find();
         return result;

@@ -28,5 +28,11 @@ contribuicoesRouter.get(
     contribuicoesController.listarContribuicoesPorUsuarioID
 );
 
+contribuicoesRouter.post(
+    "/deletar",
+    ensureAdminAuthenticated,
+    contribuicoesController.deletarContribuicoesemLote
+);
+
 
 export default contribuicoesRouter;
