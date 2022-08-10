@@ -1,6 +1,8 @@
-import { injectable, inject } from "tsyringe";
+import { injectable, inject, container } from "tsyringe";
 
 import IUsuariosRepository from "@modules/usuarios/repositories/IUsuariosRepository";
+import Contribuicao from "@modules/contribuicoes/infra/typeorm/entities/Contribuicao";
+import ListarContribuicoesPorUsuarioIdService from "@modules/contribuicoes/services/ListarContribuicoesPorUsuarioIdService";
 
 @injectable()
 class CadastrarUsuarioService {
@@ -11,7 +13,20 @@ class CadastrarUsuarioService {
 
     async execute(): Promise<any> {
         const result = await this.usuariosRepository.findAll();
-        const resp = result.map((item) => {
+
+        const listarContribuicoesPorUsuarioIdService = container.resolve(
+            ListarContribuicoesPorUsuarioIdService
+        );
+
+        const promises = result.map(async (item) => {
+            const contribuicoes =
+                await listarContribuicoesPorUsuarioIdService.execute(item.id);
+            const totalPago = contribuicoes.reduce(
+                (accumulator: number, currentValue: Contribuicao) =>
+                    accumulator + +currentValue.valor,
+                0
+            );
+
             return {
                 id: item.id,
                 nome: item.nome,
@@ -24,9 +39,12 @@ class CadastrarUsuarioService {
                 sobre: item.sobre,
                 moldura: item.moldura,
                 pontuacao: item.pontuacao,
+                totalPago: totalPago,
+                contribuicoes,
             };
         });
 
+        const resp = await Promise.all(promises);
         return resp;
     }
 }
