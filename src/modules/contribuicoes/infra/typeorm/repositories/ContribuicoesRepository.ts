@@ -21,12 +21,17 @@ class ContribuicoesRepository implements IContribuicoesRepository {
         throw new Error("Method not implemented.");
     }
 
-    findbyUser(user_id: string): Promise<Contribuicao[]> {
-        throw new Error("Method not implemented.");
+    async findbyUser(usuarioId: string): Promise<Contribuicao[]> {
+        const result = await this.ormRepository.find({
+            where: {usuarioId : usuarioId },
+        });
+        return result;
     }
     
-    create(data: IRegistrarContribuicaoDTO): Promise<Contribuicao> {
-        throw new Error("Method not implemented.");
+    async create(data: IRegistrarContribuicaoDTO): Promise<Contribuicao> {
+        const contribuicaoCreated = this.ormRepository.create(data);
+        const newContribuicao = await this.ormRepository.save(contribuicaoCreated);
+        return newContribuicao;
     }
 }
 

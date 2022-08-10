@@ -15,4 +15,18 @@ contribuicoesRouter.get(
     contribuicoesController.listarContribuicoes
 );
 
+contribuicoesRouter.post(
+    "/registrar",
+    ensureAdminAuthenticated,
+    contribuicoesController.registrarContribuicao
+);
+
+// get with route params
+contribuicoesRouter.get(
+    "/:usuarioId",
+    ensureAdminAuthenticated,
+    contribuicoesController.listarContribuicoesPorUsuarioID
+);
+
+
 export default contribuicoesRouter;

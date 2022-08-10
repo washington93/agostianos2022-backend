@@ -1,19 +1,25 @@
 import { injectable, inject } from "tsyringe";
 
+
 import IContribuicoesRepository from "@modules/contribuicoes/repositories/IContribuicoesRepository";
 
+import AppError from "@shared/errors/AppError";
 
 @injectable()
-class CadastrarUsuarioService {
+class AtivarDesativarUsuarioService {
     constructor(
         @inject("ContribuicoesRepository")
         private contribuicoesRepository: IContribuicoesRepository
     ) {}
 
-    async execute(): Promise<any> {
-        const result = await this.contribuicoesRepository.findAll();
+    async execute(usuario_id:string | number): Promise<any> {
+        
+        const result = await this.contribuicoesRepository.findbyUser(
+            usuario_id
+        );
+
         return result;
     }
 }
 
-export default CadastrarUsuarioService;
+export default AtivarDesativarUsuarioService;

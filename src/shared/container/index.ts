@@ -14,6 +14,6 @@ container.registerSingleton<IUsuariosRepository>(
 );
 
 container.registerSingleton<IContribuicoesRepository>(
-    "contribuicoesRepository",
+    "ContribuicoesRepository",
     ContribuicoesRepository
 );
